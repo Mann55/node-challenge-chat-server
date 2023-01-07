@@ -39,20 +39,20 @@ app.get("/messages", function (request, response) {
   response.send(messages);
 });
 
-// Level 3 - more "read" functionality
+// Level 3 - more "read" functionality.
 app.get("/messages/search", (req, res)=>{
   const searchText = req.query.text.toLowerCase();
   const result = messages.find(msg => msg.text.toLowerCase().includes(searchText));
   res.send(result);
 });
 
-//  Read only the most recent 10 messages: /messages/latest
+//  Read only the most recent 10 messages: /messages/latest.
 app.get('/messages/latest', (req, res)=>{
   const getLastTenMsg = messages.slice(0, 10)
   res.status(200).send(getLastTenMsg);
 });
 
-//  Read one message specified by an ID
+//  Read one message specified by an ID.
 app.get("/messages/:id", function (request, response) {
   const messageId = request.params.id;
   const results = messages.find(message=> message.id == messageId);
